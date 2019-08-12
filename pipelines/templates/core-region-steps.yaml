@@ -24,4 +24,4 @@ steps:
       resourceGroupName: '$(resourceGroupName)'
       location: '$(region)'
       csmFile: '$(System.DefaultWorkingDirectory)/arm-templates/coreResourceGroupRegional.json'
-      overrideParameters: '-templateContainerUri $(templateContainerUri) -templateContainerSasToken $(templateContainerSasToken) -namingPrefix $(namingPrefix) -globalCoreResourcePrefix  $(coreNamingPrefix) -coreResourceGroupName $(coreResourceGroupName)' -environmentName $(environmentName) -subscriptionIdForKeyVaultHousingDomainCertificate $(subscriptionIdForKeyVaultHousingDomainCertificate)
+      overrideParameters: '-templateContainerUri $(templateContainerUri) -templateContainerSasToken $(templateContainerSasToken) -namingPrefix $(namingPrefix) -globalCoreResourcePrefix  $(coreNamingPrefix) -coreResourceGroupName $(coreResourceGroupName) -environmentName $(environmentName) -subscriptionIdForKeyVaultHousingDomainCertificate $(subscriptionIdForKeyVaultHousingDomainCertificate)'
