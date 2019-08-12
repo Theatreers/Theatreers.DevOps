@@ -1,27 +1,27 @@
 steps:
-        - task: AzureResourceGroupDeployment@2
-          displayName: 'Ensure Management Storage Account $(managementResourceGroupName) is present'
-          inputs:
-            azureSubscription: 'Theatreers Dev AzureDevOps ServPrin'
-            resourceGroupName: '$(managementResourceGroupName)'
-            location: '$(region)'
-            csmFile: '$(System.DefaultWorkingDirectory)/arm-templates/storageAccount.json'
-            overrideParameters: '-accountName $(managementStorageAccountName)'
-        - task: AzureFileCopy@1
-          displayName: 'Copy ARM Templates to Management Storage Account: $(managementResourceGroupName)'
-          inputs:
-            SourcePath: '$(System.DefaultWorkingDirectory)/arm-templates'
-            azureSubscription: 'Theatreers Dev AzureDevOps ServPrin'
-            Destination: AzureBlob
-            storage: '$(managementStorageAccountName)'
-            ContainerName: templates
-            outputStorageUri: templateContainerUri
-            outputStorageContainerSasToken: templateContainerSasToken
-        - task: AzureResourceGroupDeployment@2
-          displayName: 'Deploy $(region) Core Resource Group for $(environmentName) in $(resourceGroupName)'
-          inputs:
-            azureSubscription: 'Theatreers Dev AzureDevOps ServPrin'
-            resourceGroupName: '$(resourceGroupName)'
-            location: '$(region)'
-            csmFile: '$(System.DefaultWorkingDirectory)/arm-templates/coreResourceGroupRegional.json'
-            overrideParameters: '-templateContainerUri $(templateContainerUri) -templateContainerSasToken $(templateContainerSasToken) -namingPrefix $(namingPrefix) -globalCoreResourcePrefix  $(coreNamingPrefix) -coreResourceGroupName $(coreResourceGroupName)'
+  - task: AzureResourceGroupDeployment@2
+    displayName: 'Ensure Management Storage Account $(managementResourceGroupName) is present'
+    inputs:
+      azureSubscription: 'Theatreers Dev AzureDevOps ServPrin'
+      resourceGroupName: '$(managementResourceGroupName)'
+      location: '$(region)'
+      csmFile: '$(System.DefaultWorkingDirectory)/arm-templates/storageAccount.json'
+      overrideParameters: '-accountName $(managementStorageAccountName)'
+  - task: AzureFileCopy@1
+    displayName: 'Copy ARM Templates to Management Storage Account: $(managementResourceGroupName)'
+    inputs:
+      SourcePath: '$(System.DefaultWorkingDirectory)/arm-templates'
+      azureSubscription: 'Theatreers Dev AzureDevOps ServPrin'
+      Destination: AzureBlob
+      storage: '$(managementStorageAccountName)'
+      ContainerName: templates
+      outputStorageUri: templateContainerUri
+      outputStorageContainerSasToken: templateContainerSasToken
+  - task: AzureResourceGroupDeployment@2
+    displayName: 'Deploy $(region) Core Resource Group for $(environmentName) in $(resourceGroupName)'
+    inputs:
+      azureSubscription: 'Theatreers Dev AzureDevOps ServPrin'
+      resourceGroupName: '$(resourceGroupName)'
+      location: '$(region)'
+      csmFile: '$(System.DefaultWorkingDirectory)/arm-templates/coreResourceGroupRegional.json'
+      overrideParameters: '-templateContainerUri $(templateContainerUri) -templateContainerSasToken $(templateContainerSasToken) -namingPrefix $(namingPrefix) -globalCoreResourcePrefix  $(coreNamingPrefix) -coreResourceGroupName $(coreResourceGroupName)' -environmentName $(environmentName) -subscriptionIdForKeyVaultHousingDomainCertificate $(subscriptionIdForKeyVaultHousingDomainCertificate)

@@ -95,10 +95,10 @@
                 },
                 "parameters": {
                     "namePrefix": {
-                        "value": "[variables('apiManagementServiceCustomHostname')]"
+                        "value": "[parameters('namingPrefix')]"
                     },
                     "hostName": {
-                        "value": "[parameters('namingPrefix')]"
+                        "value": "[variables('apiManagementServiceCustomHostname')]"
                     },
                     "keyVaultSecretId": {
                         "value": "[variables('keyVaultSecretId')]"
