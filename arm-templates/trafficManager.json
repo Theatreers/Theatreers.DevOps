@@ -9,7 +9,7 @@
             }
           },       
         "httpsProbeEnabled": {
-            "type": "boolean",
+            "type": "bool",
             "defaultValue": true,
             "metadata": {
             "description": "The name prefix"
