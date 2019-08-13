@@ -6,7 +6,7 @@ stages:
     managementStorageAccountName: 'thmgtdevartifactstg'
     coreResourceGroupName: 'th-core-dev-rg'
     coreNamingPrefix: 'th-core-dev'
-  dependsOn: []
+  dependsOn: ['Core_Dev_Global']
   displayName: 'Core - Dev (Regional)'
   jobs:
     - job: 'Core_Dev_Regional_Job'
