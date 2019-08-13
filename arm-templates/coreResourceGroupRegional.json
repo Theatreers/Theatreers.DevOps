@@ -168,9 +168,6 @@
             "name": "trafficManagerEndpointDeployment",
             "type": "Microsoft.Resources/deployments",
             "resourceGroup": "[parameters('coreResourceGroupName')]",
-            "dependsOn": [
-                "apimDeployment"
-            ],
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
