@@ -32,7 +32,8 @@
                   "protocol": "[if(parameters('httpsProbeEnabled'), 'HTTPS', 'HTTP')]",
                   "port": "[if(parameters('httpsProbeEnabled'), 443, 80)]",
                   "path": "/",
-                  "intervalInSeconds": 30
+                  "intervalInSeconds": 30,
+                  "timeoutInSeconds": 10
                 }
             }
         }
