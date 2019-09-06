@@ -16,8 +16,8 @@ stages:
       strategy:
         matrix: 
           { 
-          westeurope: { namingPrefix: 'th-core-dev-weu', region: 'West Europe', resourceGroupName: 'th-core-dev-weu-rg'  },
-          northeurope: { namingPrefix: 'th-core-dev-neu', region: 'North Europe', resourceGroupName: 'th-core-dev-neu-rg'  }
+          westeurope: { namingPrefix: 'th-core-dev-weu', region: 'West Europe', resourceGroupName: 'th-core-dev-weu-rg'  }
+          #northeurope: { namingPrefix: 'th-core-dev-neu', region: 'North Europe', resourceGroupName: 'th-core-dev-neu-rg'  }
           }
         maxParallel: 1
       steps:
