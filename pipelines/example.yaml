@@ -3,6 +3,7 @@ stages:
       displayName: "Build Step"
       jobs:
         - job: build
+          pool: ubuntu-latest
           steps:
             - task: PublishBuildArtifacts@1
               inputs:
@@ -13,6 +14,7 @@ stages:
       displayName: "Dev Environment"
       jobs:
         - job: dev
+          pool: ubuntu-latest
           steps:
           - task: DownloadPipelineArtifact@2
             inputs:
