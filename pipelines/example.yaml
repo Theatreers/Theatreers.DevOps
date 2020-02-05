@@ -1,1 +1,33 @@
-
+stages:
+    - stage: build
+      displayName: "Build Step"
+      jobs:
+        - job: build
+          steps:
+            - task: PublishBuildArtifacts@1
+              inputs:
+                PathtoPublish: 'templates'
+                ArtifactName: 'drop'
+                publishLocation: 'Container'    
+    - stage: dev
+      displayName: "Dev Environment"
+      jobs:
+        - job: dev
+          steps:
+          - task: DownloadPipelineArtifact@2
+            inputs:
+              buildType: 'current'
+              artifactName: 'drop'
+              targetPath: '$(Pipeline.Workspace)'
+          - task: AzureResourceManagerTemplateDeployment@3
+            inputs:
+                deploymentScope: 'Resource Group'
+                azureResourceManagerConnection: 'Reddobowen Subscription'
+                subscriptionId: '0d9fd97f-71f6-4b7b-adbb-3a654846e587'
+                action: 'Create Or Update Resource Group'
+                resourceGroupName: 'theatreers'
+                location: 'North Europe'
+                templateLocation: 'Linked artifact'
+                csmFile: '$(Pipeline.Workspace)/function.json'
+                deploymentMode: 'Incremental'
+            
